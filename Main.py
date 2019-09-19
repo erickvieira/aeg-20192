@@ -1,21 +1,14 @@
 from Grafo_Implementacao import Grafo
-from string import ascii_uppercase
 from random import randint
-from Utils import split_str
+import Utils as utils
 
 grafo = Grafo()
 limite = randint(1, 20)
-letras = split_str(ascii_uppercase)
-print('> GERANDO GRAFO DE %d VERTICES' % limite)
+print('> GERANDO GRAFO DE %02d VERTICES' % limite)
 grafo.DefinirN(limite)
 
 print('= ADICIONANDO ARESTAS =================')
-def gerarArestasAleatoriamente(limite, grafo):
-	for u in range(limite - 1):
-		for E in range(randint(0, limite - 1)):
-			grafo.AdicionarAresta(letras[u], letras[randint(0, limite - 1)])
-	return grafo
-grafo = gerarArestasAleatoriamente(limite, grafo)
+grafo = utils.gerarGrafo(limite, grafo)
 print(grafo.nos)
 print('=======================================\n')
 
