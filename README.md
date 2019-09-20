@@ -35,14 +35,14 @@ Para rodar este projeto, é necessário ter instalada uma versão igual ou super
 - **Viz(v, Fechada)**: retorna uma lista de todos os vizinhos do grafo atual. Caso a flag __Fechada__ seja marcada, o próprio _v_ também será incluído no retorno.
 - **Print()**: produz uma representação gráfica (em caracteres alfanuméricos) do grafo atual.
 
-### Matriz_Adjacencia
+#### Matriz_Adjacencia
 
 - **__ init__(grafo)**: instancia uma nova matriz de acordo com o grafo informado.
 - **GetMatriz()**: retorna uma lista de listas, contendo a representação da matriz de adjacencia do grafo informado.
 - **TrocarGrafo(grafo)**: permite a troca do grafo associado à matriz.
 - **CalcularMatriz()**: retorna uma representação gráfica (em caracteres alfanuméricos) do grafo atual.
 
-### Lista_Adjacencia
+#### Lista_Adjacencia
 
 - **__ init__(grafo)**: instancia uma nova lista de acordo com o grafo informado.
 - **GetLista()**: retorna uma lista de adjacencias do grafo informado.
