@@ -4,7 +4,7 @@ Algoritmos em Grafos - 2019/2, Instituto de Informática, UFG
 
 ## Autor
 
-- Erick Vinícius Vieira e Souza / 201515568
+- Erick Vinícius Vieira e Souza / _201515568_
 
 ## Instruções
 
