@@ -3,7 +3,7 @@ from random import randint
 from string import ascii_uppercase
 import re
 
-class Grafo(IGrafo):
+class Grafo_Lista_Adjacencia(IGrafo):
 
     def __init__(self, orientado = False):
         self.__vertices = {}
@@ -64,7 +64,8 @@ class Grafo(IGrafo):
             self.__vertices[u].remove(v)
             if (not self.__orientado):
                 self.__vertices[v].remove(u)
-        return [(u, v), (v, u)]
+                return [(u, v), (v, u)]
+        return [(u, v)]
 
     def AdicionarAresta(self, u = '', v = ''):
         if v == '' or u == '':
