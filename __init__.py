@@ -1,9 +1,9 @@
-from Grafo_Implementacao import Grafo
-from Matriz_Adjacencias import Matriz_Adjacencias
+from Grafo_Lista_Adjacencia import Grafo_Lista_Adjacencia
+from Grafo_Matriz_Adjacencia import Grafo_Matriz_Adjacencia
 from random import randint
 import Utils as utils
 
-grafo = Grafo()
+grafo = Grafo_Lista_Adjacencia()
 limite = randint(1, 26)
 print('> GERANDO GRAFO DE %02d VERTICES\n\n' % limite)
 grafo.DefinirN(limite)
@@ -18,8 +18,7 @@ print('- DE VERTICES: %s' % grafo.V())
 print('- DE ARESTAS:  %s' % grafo.E())
 print('=======================================\n')
 
-matriz = Matriz_Adjacencias(grafo)
-matriz.CalcularMatriz()
+matriz = Grafo_Matriz_Adjacencia(grafo)
 
 print('= MATRIZ DE ADJACENCIAS ===============')
 print(matriz)

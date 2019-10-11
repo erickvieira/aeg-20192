@@ -85,7 +85,10 @@ class Grafo_Lista_Adjacencia(IGrafo):
         return self.__vertices
 
     def SaoViz(self, u = '', v = ''):
-        return u in self.__vertices[v] and v in self.__vertices[u]
+        if not self.__orientado:
+            return u in self.__vertices[v] and v in self.__vertices[u]
+        else:
+            return u in self.__vertices[v]
 
     def Viz(self, v, Tipo="*", Fechada=False):
         vizinhos_de_v = self.__vertices[v]
