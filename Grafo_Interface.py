@@ -1,6 +1,5 @@
 from abc import ABCMeta, abstractmethod
 
-
 class IGrafo(metaclass=ABCMeta):
     # Classe base abstrata para representações de grafos
 
@@ -47,3 +46,20 @@ class IGrafo(metaclass=ABCMeta):
         Tipo="+" (resp. "-") significa listar apenas as arestas de saída (resp. entrada) de v.
         """
         pass
+    
+    def BuscaLargura(self, callback = lambda u, v: print((u, v))):
+        marcados = { key: False for key in self.V() }
+        marcados[self.V()[0]] = True
+        F = []
+        F.append(self.V()[0])
+        while F:
+            vizinhos_de_v = filter(lambda x: not marcados[x], self.Viz(F[0]))
+            for w in vizinhos_de_v:
+                if not marcados[w]:
+                    callback(F[0], w)
+                    marcados[w] = True
+                    F.append(w)
+                else:
+                    if w in F:
+                        callback(F[0], w)
+            marcados[F.pop(0)] = True

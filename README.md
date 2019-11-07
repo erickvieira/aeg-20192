@@ -16,14 +16,13 @@ Para rodar este projeto, é necessário ter instalada uma versão igual ou super
 1. Main.py: um script responsável por executar um exemplo aleatório de um objeto da classe `Grafo`.  
 2. Utils.py: o script resposável pela criação randômica do grafo supracitado.  
 3. Grafo_Interface.py: classe abstrata fornecida pelo professor.  
-4. Grafo_Implementacao.py: classe que implementa as especificações do item anterior.  
-5. Matriz_Adjacencias.py: classe responsável por implementar a matriz de adjacências, segundo um grafo qualquer (instância da classe `Grafo`).  
-6. Lista_Adjacencia.py: classe responsável por implementar a lista de adjacências, segundo um grafo qualquer (instância da classe `Grafo`).  
-7. README.md: este arquivo.
+4. Grafo_Lista_Adjacencia.py: classe que implementa as especificações do item anterior.  
+5. Grafo_Matriz_Adjacencias.py: classe responsável por implementar a matriz de adjacências.  
+6. README.md: este arquivo.
 
 ### Principais Métodos e Funções
 
-#### Grafo
+#### Grafo_Lista_Adjacencia & Grafo_Matriz_Adjacencias
 
 - **__ init__(orientado)**: construtor da classe `Grafo`; caso a flag _orientado_ seja sinalizada com `True`, o grafo passará a se comportar de maneira diferente [para atender a esta especificaçao](http://www.educ.fc.ul.pt/icm/icm2001/icm33/grafosorientados.htm).
 - **DefinirN(n)**: inicia o grafo com N vértices, nomeados segundo as letras do Alfabeto Romano Moderno `(A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, W, V, X, Y, Z)`.  
@@ -34,16 +33,3 @@ Para rodar este projeto, é necessário ter instalada uma versão igual ou super
 - **SaoViz(u, v)**: retorna `True` quando _u_ é vizinho de _v_ e `False`, caso contrário.
 - **Viz(v, Fechada)**: retorna uma lista de todos os vizinhos do grafo atual. Caso a flag __Fechada__ seja marcada, o próprio _v_ também será incluído no retorno.
 - **Print()**: produz uma representação gráfica (em caracteres alfanuméricos) do grafo atual.
-
-#### Matriz_Adjacencia
-
-- **__ init__(grafo)**: instancia uma nova matriz de acordo com o grafo informado.
-- **GetMatriz()**: retorna uma lista de listas, contendo a representação da matriz de adjacencia do grafo informado.
-- **TrocarGrafo(grafo)**: permite a troca do grafo associado à matriz.
-- **CalcularMatriz()**: retorna uma representação gráfica (em caracteres alfanuméricos) do grafo atual.
-
-#### Lista_Adjacencia
-
-- **__ init__(grafo)**: instancia uma nova lista de acordo com o grafo informado.
-- **GetLista()**: retorna uma lista de adjacencias do grafo informado.
-- **TrocarGrafo(grafo)**: permite a troca do grafo associado à lista atual.
