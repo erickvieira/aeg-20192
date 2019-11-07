@@ -1,26 +1,15 @@
-from Grafo_Implementacao import Grafo
-from Matriz_Adjacencias import Matriz_Adjacencias
-from random import randint
-import Utils as utils
+#!/bin/python3
+from Grafo_Lista_Adjacencia import Grafo
+
+print('Busca em largura - Grafo 4 posições')
 
 grafo = Grafo()
-limite = randint(1, 26)
-print('> GERANDO GRAFO DE %02d VERTICES\n\n' % limite)
-grafo.DefinirN(limite)
+grafo.DefinirN(4)
+grafo.AdicionarAresta('A', 'B')
+grafo.AdicionarAresta('A', 'D')
+grafo.AdicionarAresta('C', 'B')
 
-print('= ADICIONANDO ARESTAS =================')
-grafo = utils.gerarGrafo(limite, grafo)
-print(grafo)
-print('=======================================\n')
+print('Arestas: {}'.format(grafo.E()))
 
-print('= CONJUNTOS ===========================')
-print('- DE VERTICES: %s' % grafo.V())
-print('- DE ARESTAS:  %s' % grafo.E())
-print('=======================================\n')
-
-matriz = Matriz_Adjacencias(grafo)
-matriz.CalcularMatriz()
-
-print('= MATRIZ DE ADJACENCIAS ===============')
-print(matriz)
-print('=======================================\n')
+print('\nRodando a busca')
+grafo.BuscaLargura()
