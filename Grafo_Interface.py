@@ -4,9 +4,9 @@ class IGrafo(metaclass=ABCMeta):
     # Classe base abstrata para representações de grafos
 
     @abstractmethod
-    def __init__(self, orientado=False):
+    def __init__(self, orientado = False):
             # Grafo se direct=False ou Digrafo se direct=True.
-        self.n, self.m, self.orientado = orientado
+        self.n, self.m, self._orientado = orientado
 
     @abstractmethod
     def DefinirN(self, n):
@@ -47,14 +47,17 @@ class IGrafo(metaclass=ABCMeta):
         """
         pass
     
+    def __vizinhos_nao_marcados_de_v(self, marcados = {}, v = ""):
+        return filter(lambda x: not marcados[x], self.Viz(v))
+    
     def BuscaLargura(self, callback = lambda u, v: print((u, v))):
-        marcados = { key: False for key in self.V() }
-        marcados[self.V()[0]] = True
+        vertices = self.V()
+        marcados = { key: False for key in vertices }
+        marcados[vertices[0]] = True
         F = []
-        F.append(self.V()[0])
+        F.append(vertices[0])
         while F:
-            vizinhos_de_v = filter(lambda x: not marcados[x], self.Viz(F[0]))
-            for w in vizinhos_de_v:
+            for w in filter(lambda x: not marcados[x], self.Viz(F[0])):
                 if not marcados[w]:
                     callback(F[0], w)
                     marcados[w] = True
@@ -63,3 +66,45 @@ class IGrafo(metaclass=ABCMeta):
                     if w in F:
                         callback(F[0], w)
             marcados[F.pop(0)] = True
+    
+    def BuscaProfundidade(self, callback = lambda u, v: print((u, v))):
+        vertices = self.V()
+        marcados = { key: False for key in vertices }
+        P = []
+        def p(v):
+            marcados[v] = True
+            P.insert(0, v)
+            for w in filter(lambda x: not marcados[x], self.Viz(v)):
+                if not marcados[w]:
+                    callback(P[0], w)
+                    p(w)
+                else:
+                    if w in P:
+                        callback(P[0], w)
+            marcados[P.pop(0)]
+        p(vertices[0])
+    
+    def BuscaCompleta(self, callback = lambda u, v: print((u, v))):
+        if not self._orientado:
+            raise Exception('FATAL: impossível rodar uma BuscaCompleta em um grafo que não seja DÍGRAFO.')
+        else :
+            vertices = self.V()
+            marcados = { key: False for key in vertices }
+            P = []
+            def p(v):
+                marcados[v] = True
+                P.insert(0, v)
+                for w in filter(lambda x: not marcados[x], self.Viz(v)):
+                    callback(P[0], w)
+                    if not marcados[w]:
+                        p(w)
+                marcados[P.pop(0)]
+            for r in vertices:
+                if not marcados[r]:
+                    p(r)
+    
+    def ComponentesFortementeConexas(self, callback = lambda u, v: print((u, v))):
+        if not self._orientado:
+            raise Exception('FATAL: impossível rodar procurar ComponentesFortementeConexas em um grafo que não seja DÍGRAFO.')
+        else:
+            pass
